@@ -1,58 +1,173 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Student Registration Form</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Student Registration</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-  <div class="container">
-    <h2>Student Registration Form</h2>
-    <form id="regForm">
-      
-      <label for="fullname">Full Name:</label>
-      <input type="text" id="fullname" name="fullname" required>
+  <main class="page">
+    <header class="header">
+      <h1>Student Registration</h1>
+      <p class="subtitle">Fill in your details to create your student profile.</p>
+    </header>
 
-      <label for="email">Email:</label>
-      <input type="email" id="email" name="email" required>
+    <section class="card">
+      <form id="registrationForm" novalidate>
+        <!-- Personal Info -->
+        <fieldset class="grid">
+          <legend>Personal Information</legend>
 
-      <label for="phone">Phone Number:</label>
-      <input type="tel" id="phone" name="phone" maxlength="10" required>
+          <div class="field">
+            <label for="firstName">First Name <span aria-hidden="true">*</span></label>
+            <input id="firstName" name="firstName" type="text" autocomplete="given-name" required minlength="2" />
+            <small class="error" id="err-firstName"></small>
+          </div>
 
-      <label for="dob">Date of Birth:</label>
-      <input type="date" id="dob" name="dob" required>
+          <div class="field">
+            <label for="lastName">Last Name <span aria-hidden="true">*</span></label>
+            <input id="lastName" name="lastName" type="text" autocomplete="family-name" required minlength="2" />
+            <small class="error" id="err-lastName"></small>
+          </div>
 
-      <label>Gender:</label>
-      <div class="gender">
-        <input type="radio" name="gender" value="Male" required> Male
-        <input type="radio" name="gender" value="Female"> Female
-        <input type="radio" name="gender" value="Other"> Other
+          <div class="field">
+            <label for="email">Email <span aria-hidden="true">*</span></label>
+            <input id="email" name="email" type="email" autocomplete="email" placeholder="name@example.com" required />
+            <small class="error" id="err-email"></small>
+          </div>
+
+          <div class="field">
+            <label for="phone">Phone <span aria-hidden="true">*</span></label>
+            <input id="phone" name="phone" type="tel" inputmode="numeric" placeholder="10-digit number" required />
+            <small class="error" id="err-phone"></small>
+          </div>
+
+          <div class="field">
+            <label for="dob">Date of Birth <span aria-hidden="true">*</span></label>
+            <input id="dob" name="dob" type="date" required />
+            <small class="error" id="err-dob"></small>
+          </div>
+
+          <div class="field">
+            <label>Gender <span aria-hidden="true">*</span></label>
+            <div class="choices">
+              <label><input type="radio" name="gender" value="Male" required /> Male</label>
+              <label><input type="radio" name="gender" value="Female" /> Female</label>
+              <label><input type="radio" name="gender" value="Other" /> Other</label>
+            </div>
+            <small class="error" id="err-gender"></small>
+          </div>
+
+          <div class="field col-span-2">
+            <label for="address">Address</label>
+            <textarea id="address" name="address" rows="3" placeholder="Street, City, State, ZIP"></textarea>
+            <small class="hint">Optional</small>
+          </div>
+        </fieldset>
+
+        <!-- Academic Info -->
+        <fieldset class="grid">
+          <legend>Academic Information</legend>
+
+          <div class="field">
+            <label for="rollNo">Roll Number <span aria-hidden="true">*</span></label>
+            <input id="rollNo" name="rollNo" type="text" placeholder="e.g., CSE23A045" required />
+            <small class="error" id="err-rollNo"></small>
+          </div>
+
+          <div class="field">
+            <label for="department">Department <span aria-hidden="true">*</span></label>
+            <select id="department" name="department" required>
+              <option value="">Select department</option>
+              <option>Computer Science</option>
+              <option>Information Technology</option>
+              <option>Electronics & Communication</option>
+              <option>Electrical & Electronics</option>
+              <option>Mechanical</option>
+              <option>Civil</option>
+              <option>Biotechnology</option>
+            </select>
+            <small class="error" id="err-department"></small>
+          </div>
+
+          <div class="field">
+            <label for="year">Year of Study <span aria-hidden="true">*</span></label>
+            <select id="year" name="year" required>
+              <option value="">Select year</option>
+              <option>1st Year</option>
+              <option>2nd Year</option>
+              <option>3rd Year</option>
+              <option>4th Year</option>
+              <option>PG</option>
+            </select>
+            <small class="error" id="err-year"></small>
+          </div>
+
+          <div class="field">
+            <label for="section">Section</label>
+            <select id="section" name="section">
+              <option value="">Select section (optional)</option>
+              <option>A</option>
+              <option>B</option>
+              <option>C</option>
+            </select>
+          </div>
+        </fieldset>
+
+        <!-- Security -->
+        <fieldset class="grid">
+          <legend>Security</legend>
+
+          <div class="field">
+            <label for="password">Password <span aria-hidden="true">*</span></label>
+            <input id="password" name="password" type="password" required minlength="8" />
+            <div id="strength" class="strength" aria-live="polite"></div>
+            <small class="error" id="err-password"></small>
+          </div>
+
+          <div class="field">
+            <label for="confirmPassword">Confirm Password <span aria-hidden="true">*</span></label>
+            <input id="confirmPassword" name="confirmPassword" type="password" required />
+            <small class="error" id="err-confirmPassword"></small>
+          </div>
+        </fieldset>
+
+        <!-- Terms -->
+        <div class="terms">
+          <label class="checkbox">
+            <input type="checkbox" id="agree" required />
+            <span>I agree to the <a href="#" aria-label="Terms and Conditions">Terms & Conditions</a>.</span>
+          </label>
+          <small class="error" id="err-agree"></small>
+        </div>
+
+        <!-- Actions -->
+        <div class="actions">
+          <button type="reset" class="btn ghost">Clear</button>
+          <button type="submit" class="btn">Register</button>
+        </div>
+      </form>
+    </section>
+
+    <!-- Success Modal -->
+    <dialog id="successModal">
+      <div class="modal">
+        <h2>Registration Successful 🎉</h2>
+        <p>Here’s a quick summary of your details:</p>
+        <div id="preview" class="preview"></div>
+        <div class="actions">
+          <button id="closeModal" class="btn">Done</button>
+        </div>
       </div>
+    </dialog>
 
-      <label for="course">Course:</label>
-      <select id="course" name="course" required>
-        <option value="">--Select--</option>
-        <option value="B.Sc">B.Sc</option>
-        <option value="B.Com">B.Com</option>
-        <option value="B.A">B.A</option>
-        <option value="BCA">BCA</option>
-        <option value="MCA">MCA</option>
-      </select>
-
-      <label for="address">Address:</label>
-      <textarea id="address" name="address" rows="3" required></textarea>
-
-      <label for="password">Password:</label>
-      <input type="password" id="password" name="password" required>
-
-      <label for="confirm">Confirm Password:</label>
-      <input type="password" id="confirm" name="confirm" required>
-
-      <button type="submit">Register</button>
-    </form>
-    <p id="msg"></p>
-  </div>
+    <footer class="footer">
+      <small>© <span id="yearNow"></span> Campus Portal</small>
+    </footer>
+  </main>
 
   <script src="script.js"></script>
 </body>
