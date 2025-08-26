@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Registration Form</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h2>Student Registration Form</h2>
+    <form id="regForm">
+      
+      <label for="fullname">Full Name:</label>
+      <input type="text" id="fullname" name="fullname" required>
+
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email" required>
+
+      <label for="phone">Phone Number:</label>
+      <input type="tel" id="phone" name="phone" maxlength="10" required>
+
+      <label for="dob">Date of Birth:</label>
+      <input type="date" id="dob" name="dob" required>
+
+      <label>Gender:</label>
+      <div class="gender">
+        <input type="radio" name="gender" value="Male" required> Male
+        <input type="radio" name="gender" value="Female"> Female
+        <input type="radio" name="gender" value="Other"> Other
+      </div>
+
+      <label for="course">Course:</label>
+      <select id="course" name="course" required>
+        <option value="">--Select--</option>
+        <option value="B.Sc">B.Sc</option>
+        <option value="B.Com">B.Com</option>
+        <option value="B.A">B.A</option>
+        <option value="BCA">BCA</option>
+        <option value="MCA">MCA</option>
+      </select>
+
+      <label for="address">Address:</label>
+      <textarea id="address" name="address" rows="3" required></textarea>
+
+      <label for="password">Password:</label>
+      <input type="password" id="password" name="password" required>
+
+      <label for="confirm">Confirm Password:</label>
+      <input type="password" id="confirm" name="confirm" required>
+
+      <button type="submit">Register</button>
+    </form>
+    <p id="msg"></p>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
